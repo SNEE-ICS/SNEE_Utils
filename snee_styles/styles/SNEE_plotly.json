@@ -1,0 +1,70 @@
+{
+    "layout": {
+        "width": 800,
+        "height": 600,
+        "autosize": false,
+        "font": {
+            "family": "Arial",
+            "color": "black"
+        },
+        "plot_bgcolor": "white",
+        "paper_bgcolor": "white",
+        "title": {
+            "font": {
+                "size": 20,
+                "color": "black",
+                "weight": "bold"
+            },
+            "x": 0.5,
+            "xanchor": "center",
+            "pad": {"t": 15}
+        },
+        "yaxis": {
+            "title": {
+                "font": {
+                    "size": 16,
+                    "color": "black",
+                    "weight": "bold"
+                }
+            },
+            "gridcolor": "rgba(128, 128, 128, 0.5)",
+            "gridwidth": 0.5,
+            "zerolinecolor": "#808080",
+            "zerolinewidth": 1,
+            "ticklen": 0,
+            "tickcolor": "#808080"
+        },
+        "xaxis": {
+            "title": {
+                "font": {
+                    "size": 16,
+                    "color": "black",
+                    "weight": "bold"
+                }
+            },
+            "showgrid": false,
+            "zerolinecolor": "#808080",
+            "zerolinewidth": 1,
+            "ticklen": 0,
+            "tickcolor": "#808080"  
+        },
+        "legend": {
+            "orientation": "h",
+            "font": {
+                "size": 14,
+                "color": "black",
+                "weight": "bold"
+            },
+            "bgcolor": null,
+            "bordercolor": null,
+            "xanchor": "center",
+            "yanchor": "top",
+            "x": 0.5,
+            "y": -0.15
+        },
+
+        "colorway": [
+            "#0D9C93", "#554083", "#B41E8C", "#005EB8", "#E28C03", "#0A7C75", "#443371", "#901870", "#004B93", "#B47002", "#075D58", "#332655", "#6C1254", "#00386E", "#875401",  "#55B9B3", "#8879AF", "#CA61AE", "#4C8ECD", "#EAAE4E", "#9ED7DE", "#BBB2D1", "#E1A5D1", "#99BEE2", "#F3D19A"
+        ]
+    }
+}
