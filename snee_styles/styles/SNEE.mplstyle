@@ -42,35 +42,33 @@ lines.markersize        : 4         # markersize, in points
 # The font.size property is the default font size for text, given in pts.
 # 12pt is the standard value.
 #
-font.family          : sans-serif
-font.sans-serif      : Arial
-font.style           : normal
-#font.variant        : normal
-#font.weight         : medium
-#font.stretch        : normal
+font.family             : sans-serif
+font.sans-serif         : Arial
+font.style              : normal
+#font.variant           : normal
+#font.weight            : medium
+#font.stretch           : normal
 
 
 ##############      AXES      ###############
 # See http://matplotlib.org/api/axes_api.html#module-matplotlib.axes for more information
-axes.facecolor       : white
-axes.edgecolor       : none
-axes.linewidth       : 0.0   # edge linewidth
-axes.grid            : True  # display grid or not
-axes.grid.which      : major
-axes.grid.axis       : y
-axes.titlesize       : 12    # fontsize of the axes title
-axes.titlepad        : 15    # vertical offset of the axes title
-axes.labelsize       : 12    # fontsize of the x any y labels
-axes.labelpad        : 8.0   # space between label and axis
-axes.labelweight     : bold
-axes.titleweight     : bold
-axes.labelcolor      : black
-axes.axisbelow       : True  # whether axis gridlines and ticks are below the axes elements (lines, text, etc)
+axes.facecolor          : white
+axes.edgecolor          : none
+axes.linewidth          : 0.0   # edge linewidth
+axes.grid               : True  # display grid or not
+axes.grid.which         : major
+axes.grid.axis          : y
+axes.titlesize          : 12    # fontsize of the axes title
+axes.titlepad           : 15    # vertical offset of the axes title
+axes.labelsize          : 12    # fontsize of the x any y labels
+axes.labelpad           : 8.0   # space between label and axis
+axes.labelweight        : bold
+axes.titleweight        : bold
+axes.labelcolor         : black
+axes.axisbelow          : True  # whether axis gridlines and ticks are below the axes elements (lines, text, etc)
+axes.prop_cycle         : cycler('color', ['0D9C93', '554083', 'B41E8C', '005EB8', 'E28C03', '075D58', '332655', '6C1254', '00386E', '875401', '0A7C75', '443371', '901870', '004B93', 'B47002',  '55B9B3', '8879AF', 'CA61AE', '4C8ECD', 'EAAE4E', '9ED7DE', 'BBB2D1', 'E1A5D1', '99BEE2', 'F3D19A'])
+                            # color cycle for plot lines as list of string colorspecs: # single letter, long name, or web-style hex
 axes.formatter.use_locale: True  # Use locale for formatting tick labels with commas
-axes.prop_cycle      : cycler('color', ['0D9C93', '554083', 'B41E8C', '005EB8', 'E28C03', '075D58', '332655', '6C1254', '00386E', '875401', '0A7C75', '443371', '901870', '004B93', 'B47002',  '55B9B3', '8879AF', 'CA61AE', '4C8ECD', 'EAAE4E', '9ED7DE', 'BBB2D1', 'E1A5D1', '99BEE2', 'F3D19A'])
-                                            # color cycle for plot lines as list of string colorspecs:
-                                            # single letter, long name, or web-style hex
-
 
 ##############        GRIDS       ################
 grid.color             : grey

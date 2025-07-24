@@ -13,7 +13,7 @@
 # permission is obtained from QuantumBlack Visual Analytics Ltd.
 
 """
-This module contains the ``mpl_style`` function which applies the SNEEstylepython ``matplotlib`` theme
+This module contains the ``mpl_style`` and ``plotly_style`` function which applies the snee_styles ``matplotlib`` theme
 
 Some of the tick properties cannot be set using ``plt.style.use``,
 so we have to set them in code.
@@ -56,4 +56,3 @@ def plotly_style():
     #  Register the custome template in plotly
     pio.templates['custom'] = custom_template
     pio.templates.default = 'custom'
-
