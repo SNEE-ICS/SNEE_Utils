@@ -10,4 +10,7 @@ setup(
     license_files=["LICENSE"],
     install_requires=[],  # Add any dependencies here or parse requirements.txt if needed
     include_package_data=True,  # <- This allows MANIFEST.in to include non-code files
+    package_data={
+        "snee_styles": ["styles/snee.mplstyle","styles/SNEE_plotly.json"],  # Explicitly include the .mplstyle file
+    },
 )
