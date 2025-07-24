@@ -8,15 +8,16 @@
 ## SNEE_utils
 
 SNEE_utils is a python package that could be reused from analysts working within the Suffolk and north east Essex Intelligence Function. Repositories in this organisation are created and maintained by analysts working in the [SNEE Intelligence function](https://www.sneeics.org.uk/can-do-health-and-care/creative/knowledge-and-intelligence/) hub.
-It contains:
+<br>
+It contains two child packages:
 
 ### 1. Python Utility Functions : py_utils
 
-This is a set of convenience function to convert notebook to html and add table of contents. This primarily used nbconvert to perform the conversion and bs4 to insert the table of contents.
+ - nb_html_export.py --> This python file contains a set of convenience function to convert notebook to html and add table of contents. This primarily used nbconvert to perform the conversion and bs4 to insert the table of contents.
 
 ### 2. SNEE Stylings : snee_styles
 
-A Python package containing useful functions for implementing SNEE style.
+- A Python package containing useful functions for implementing SNEE style.
 
 ## Installation: How do I install SNEE_utils?
 
@@ -34,7 +35,7 @@ or optionally specifying a version:
 pip install git+https://github.com/SNEE-ICS/SNEE_Utils.git@v0.0.6
 ```
 
-## How to use py_utils and snee_styles after SNEE_utils package is installed ?
+## How to use py_utils and snee_styles ?
 
 Once the parent package is installed, to use the py_utils or SNEE_styles package in your notebook, use:
 
@@ -60,7 +61,7 @@ from snee_styles import plotly_style
 plotly_style()
 ```
 
-> ⚠️ For Jupyter Notebooks--> Please make sure you run `from sneeifstyles import mpl_style` and `mpl_style()` in **code cells** as shown above. 
+> ⚠️ For Jupyter Notebooks--> Please make sure you run `from snee_styles import mpl_style, plotly_style` and `mpl_style()` `plotly_style` in **code cells** as shown above. 
 
 ## What chart types can use SNEE IF Styles?
 
@@ -74,7 +75,7 @@ plotly_style()
 - Stream plots
 - Polar plots
 
-## A few Examples
+## Examples
 
 To run the examples in [`example.ipynb`](https://github.com/SNEE-ICS/SNEE_Utils/blob/main/snee_styles/example.ipynb), install the required packages using ``pip install -r requirements_notebook.txt`` in a Python virtual environment of your choice.
 
@@ -95,20 +96,22 @@ def plot():
 
 plot()
 ```
+
 ### Seaborn or Matplotlib
 
 ![png](https://github.com/SNEE-ICS/SNEE_Utils/blob/main/snee_styles/examples/sample_plots.png)
 
 ### Plotly
-PLotly example plots can be viewed by clicking the link below:
+
+Plotly example plots can be viewed by clicking the link below:
 
 [Line Plot](snee_styles/examples/0.plotly.html)<br>
 [Scatter Plot](snee_styles/examples/1.plotly.html)<br>
 [Distribution Plot](snee_styles/examples/2.plotly.html)<br>
-Contributions to code and issues are welcome.
-
 
 ## What license do you use?
 
 QB Styles is licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
+<br>
+Contributions to code and issues are welcome.
 <hr>
