@@ -43,7 +43,7 @@ lines.markersize        : 4         # markersize, in points
 # 12pt is the standard value.
 #
 font.family             : sans-serif
-font.sans-serif         : Arial
+font.sans-serif         : DejaVu Sans, Liberation Sans, sans-serif
 font.style              : normal
 #font.variant           : normal
 #font.weight            : medium
