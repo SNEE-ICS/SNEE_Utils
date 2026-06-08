@@ -42,7 +42,7 @@ def _get_slide_styles():
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            padding-left: 600px;
+            padding-left: 25%;
             padding-right: 50px;
         }
         
@@ -59,8 +59,11 @@ def _get_slide_styles():
         .slide h2 { font-size: 4.5em !important; margin-bottom: 0.5em; color: #064169; }
         .slide h3 { font-size: 3.5em !important; margin-bottom: 0.5em; color: #064169; border-bottom: 3px solid #064169; padding-bottom: 0.2em; }
         .slide h4 { font-size: 2.5em !important; margin-bottom: 0.5em; color: #064169; }
-        .slide p { font-size: 1.5em !important; line-height: 1.5; margin-bottom: 0.5em; }
-        .slide ul, .slide ol { font-size: 1.5em !important; margin-left: 2em; margin-bottom: 0.5em; line-height: 1.5; display: inline-block; text-align: left; }
+        .slide p { font-size: 1.5em; line-height: 1.5; margin-bottom: 0.5em; }
+        .slide ul, .slide ol { font-size: 1.5em; margin-left: 2em; margin-bottom: 0.5em; line-height: 1.5;}
+        .slide ul ul, .slide ul ol, .slide ol ul, .slide ol ol { font-size: 1em; margin-bottom: 0; }
+        /* Stop paragraphs inside list items from re-applying 1.5em (fixes loose-list blowup) */
+        .slide li > p { font-size: 1em !important; margin-bottom: 0.3em; }
         a {color: #0000EE !important;}
 
         /* Media - exclude logo from general img styling */
@@ -249,8 +252,8 @@ def _generate_table_of_contents(notebook_path: str):
                     title = line.strip('#').strip()
                     slide_titles.append(title)
     toc_lines = ['<ul class="toc-list">']
-    for i, title in enumerate(slide_titles, 3):
-        toc_lines.append(f'  <li onclick="goToSlide({i})">{title}</li>')
+    for slide_index, title in slide_titles:
+        toc_lines.append(f'  <li onclick="goToSlide({slide_index})">{title}</li>')
     toc_lines.append('</ul>')
     toc_html = '\n'.join(toc_lines)
     return toc_html, slide_titles
