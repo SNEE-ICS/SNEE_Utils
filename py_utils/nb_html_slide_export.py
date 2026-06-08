@@ -237,29 +237,6 @@ def _split_notebook_into_slides(notebook_path: str, exclude_input_cells: bool = 
     return slides
 
 
-def _generate_table_of_contents(notebook_path: str):
-    """Finds all notebook headers in markdown cells and creates a table of contents."""
-    with open(notebook_path, 'r', encoding="utf-8") as f:
-        nb = nbformat.read(f, as_version=4)
-
-    slide_titles = []
-
-    for slide_index, cell in enumerate(nb['cells']):
-        if cell.cell_type == 'markdown':
-            lines = cell.source.split('\n')
-            for line in lines:
-                if line.startswith('##') and not line.startswith('###'):
-                    title = line.strip('#').strip()
-                    slide_titles.append((slide_index, title))
-
-    toc_lines = ['<ul class="toc-list">']
-    for slide_index, title in slide_titles:
-        toc_lines.append(f'  <li onclick="goToSlide({slide_index})">{title}</li>')
-    toc_lines.append('</ul>')
-    toc_html = '\n'.join(toc_lines)
-    return toc_html, [t for _, t in slide_titles]
-
-
 def convert_notebook_to_slides_html(notebook_path: str, author_name: str, exclude_input_cells: bool = True, make_table_of_contents: bool = True) -> str:
     """Converts a Jupyter notebook to an HTML slideshow presentation."""
 
@@ -379,7 +356,9 @@ def convert_notebook_to_slides_html(notebook_path: str, author_name: str, exclud
     for slide_cells, slide_title, slide_type in slides:
         if slide_type == 'section':
             # ## Section title slide with background
-            (body, _) = html_exporter.from_notebook_node(nbformat.v4.new_notebook(cells=slide_cells))
+            nb_node = nbformat.v4.new_notebook(cells=slide_cells)
+            nbformat.normalize(nb_node)
+            (body, _) = html_exporter.from_notebook_node(nb_node)
             section_bg_style = f'style="background-image: url({slide_bg_img});"' if slide_bg_img else ''
             html_parts.extend([
                 f'    <div class="slide before-toc-slide" {section_bg_style}>',
@@ -389,7 +368,9 @@ def convert_notebook_to_slides_html(notebook_path: str, author_name: str, exclud
             ])
         else:
             # ### Regular content slide
-            (body, _) = html_exporter.from_notebook_node(nbformat.v4.new_notebook(cells=slide_cells))
+            nb_node = nbformat.v4.new_notebook(cells=slide_cells)
+            nbformat.normalize(nb_node)
+            (body, _) = html_exporter.from_notebook_node(nb_node)
             html_parts.extend([
                 '    <div class="slide content-slide">',
                  logo_html,
