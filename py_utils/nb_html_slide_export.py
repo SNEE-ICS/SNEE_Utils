@@ -2,6 +2,7 @@ import nbformat
 from nbconvert import HTMLExporter
 import os
 import base64
+import uuid
 
 __all__ = ["convert_notebook_to_slides_html", "write_notebook_to_html_slide"]
 
@@ -148,6 +149,12 @@ def _generate_slide_navigation():
     </div>
     """
 ############################################################################################################################
+
+def _ensure_cell_ids(cells):
+    for cell in cells:
+        if 'id' not in cell:
+            cell['id'] = uuid.uuid4().hex[:8]
+    return cells
 
 def _extract_title_from_notebook(notebook_path: str):
     """Extract H1 title from notebook."""
@@ -356,8 +363,7 @@ def convert_notebook_to_slides_html(notebook_path: str, author_name: str, exclud
     for slide_cells, slide_title, slide_type in slides:
         if slide_type == 'section':
             # ## Section title slide with background
-            nb_node = nbformat.v4.new_notebook(cells=slide_cells)
-            nbformat.normalize(nb_node)
+            nb_node = nbformat.v4.new_notebook(cells=_ensure_cell_ids(slide_cells))
             (body, _) = html_exporter.from_notebook_node(nb_node)
             section_bg_style = f'style="background-image: url({slide_bg_img});"' if slide_bg_img else ''
             html_parts.extend([
@@ -368,8 +374,7 @@ def convert_notebook_to_slides_html(notebook_path: str, author_name: str, exclud
             ])
         else:
             # ### Regular content slide
-            nb_node = nbformat.v4.new_notebook(cells=slide_cells)
-            nbformat.normalize(nb_node)
+            nb_node = nbformat.v4.new_notebook(cells=_ensure_cell_ids(slide_cells))
             (body, _) = html_exporter.from_notebook_node(nb_node)
             html_parts.extend([
                 '    <div class="slide content-slide">',
