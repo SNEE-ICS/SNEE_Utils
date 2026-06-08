@@ -352,7 +352,19 @@ def convert_notebook_to_slides_html(notebook_path: str, author_name: str, exclud
     
     # SLIDE 3: Table of contents
     if make_table_of_contents:
-        toc, slide_titles = _generate_table_of_contents(notebook_path)
+        toc_lines = ['<ul class="toc-list">']
+        slide_titles = []
+        # slides is already popped; it renders starting at deck index 3
+        # (0=cover, 1=title, 2=TOC)
+        for deck_index, (_, slide_title, slide_type) in enumerate(slides, start=3):
+            if slide_type == 'section':
+                toc_lines.append(
+                    f'  <li onclick="goToSlide({deck_index})">{slide_title}</li>'
+                )
+                slide_titles.append(slide_title)
+        toc_lines.append('</ul>')
+        toc = '\n'.join(toc_lines)
+
         if slide_titles:
             html_parts.extend([
                 '    <div class="slide toc-slide">',
@@ -361,6 +373,7 @@ def convert_notebook_to_slides_html(notebook_path: str, author_name: str, exclud
                 f'        {toc}',
                 '    </div>'
             ])
+    
     
     # SLIDES 4+: Content slides
     for slide_cells, slide_title, slide_type in slides:
