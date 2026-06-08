@@ -241,22 +241,23 @@ def _generate_table_of_contents(notebook_path: str):
     """Finds all notebook headers in markdown cells and creates a table of contents."""
     with open(notebook_path, 'r', encoding="utf-8") as f:
         nb = nbformat.read(f, as_version=4)
-    
+
     slide_titles = []
-    
-    for cell in nb['cells']:
+
+    for slide_index, cell in enumerate(nb['cells']):
         if cell.cell_type == 'markdown':
             lines = cell.source.split('\n')
             for line in lines:
                 if line.startswith('##') and not line.startswith('###'):
                     title = line.strip('#').strip()
-                    slide_titles.append(title)
+                    slide_titles.append((slide_index, title))
+
     toc_lines = ['<ul class="toc-list">']
     for slide_index, title in slide_titles:
         toc_lines.append(f'  <li onclick="goToSlide({slide_index})">{title}</li>')
     toc_lines.append('</ul>')
     toc_html = '\n'.join(toc_lines)
-    return toc_html, slide_titles
+    return toc_html, [t for _, t in slide_titles]
 
 
 def convert_notebook_to_slides_html(notebook_path: str, author_name: str, exclude_input_cells: bool = True, make_table_of_contents: bool = True) -> str:
