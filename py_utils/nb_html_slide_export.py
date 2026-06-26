@@ -80,7 +80,7 @@ def _get_slide_styles():
         
         /* Output areas */
         .output_area, .output_subarea { margin: 20px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .plotly-graph-div, .vega-embed { margin: 20px auto !important; display: block; max-width: 100%; }
+        .plotly-graph-div, .vega-embed { margin: 20px auto !important; display: block; width: fit-content !important; max-width: 100%; }
         
         /* Navigation */
         .toc-list { list-style: none; margin-left: 0; font-size: 1.4em; }
