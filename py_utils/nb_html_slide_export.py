@@ -78,21 +78,13 @@ def _get_slide_styles():
         .slide table td { padding: 10px 12px; border-bottom: 1px solid #e0e0e0; }
         .slide table tr:nth-child(even) { background: #f8f9fa; }
         
-        /* Keep nbconvert's rendered block within the slide (kills horizontal scrollbar at its source) */
-        .jp-RenderedHTMLCommon { max-width: 100%; overflow-x: hidden; }
-
-        /* Output areas - center plots/images via the container, keep text left */
-        .jp-OutputArea-output,
-        .output_area, .output_subarea {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin: 20px 0;
-        }
-        .plotly-graph-div, .vega-embed {
-            margin: 0 auto !important;
+        /* Output areas - center the OUTPUT BLOCK itself (the 1000px-wide jp-OutputArea-output), keep text left */
+        .jp-OutputArea-output {
+            margin-left: auto !important;
+            margin-right: auto !important;
             max-width: 100%;
         }
+        .plotly-graph-div, .vega-embed { max-width: 100%; }
         
         /* Navigation */
         .toc-list { list-style: none; margin-left: 0; font-size: 1.4em; }
