@@ -79,10 +79,12 @@ def _get_slide_styles():
         .slide table tr:nth-child(even) { background: #f8f9fa; }
         
         /* Output areas - center the OUTPUT BLOCK itself (the 1000px-wide jp-OutputArea-output), keep text left */
-        .jp-OutputArea-output {
-            margin-left: auto !important;
-            margin-right: auto !important;
-            max-width: 100%;
+        .jp-Cell-outputWrapper,
+        .jp-OutputArea,
+        .jp-OutputArea-child {
+            display: flex !important;
+            justify-content: center !important;
+            width: 100% !important;
         }
         .plotly-graph-div, .vega-embed { max-width: 100%; }
         
