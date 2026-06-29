@@ -78,13 +78,16 @@ def _get_slide_styles():
         .slide table td { padding: 10px 12px; border-bottom: 1px solid #e0e0e0; }
         .slide table tr:nth-child(even) { background: #f8f9fa; }
         
-        /* Output areas - center the OUTPUT BLOCK itself (the 1000px-wide jp-OutputArea-output), keep text left */
-        .jp-Cell-outputWrapper,
-        .jp-OutputArea,
-        .jp-OutputArea-child {
-            display: flex !important;
-            justify-content: center !important;
-            width: 100% !important;
+        /* Output areas - jp-OutputArea-output is display:table-cell, which ignores flex/margin.
+           text-align:center is the only thing a table-cell obeys; the child div is made
+           inline-block so it becomes centerable. Text stays left via the inline-block reset. */
+        .jp-OutputArea-output {
+            text-align: center !important;
+        }
+        .jp-OutputArea-output > div {
+            display: inline-block !important;
+            text-align: left;
+            max-width: 100%;
         }
         .plotly-graph-div, .vega-embed { max-width: 100%; }
         
